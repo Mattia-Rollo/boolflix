@@ -1,0 +1,39 @@
+@use "./partials/mixins" as *;
+@use "./partials/variables" as *;
+
+$fa-font-path: "./webfonts";
+@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "@fortawesome/fontawesome-free/scss/solid.scss";
+@import "@fortawesome/fontawesome-free/scss/regular.scss";
+
+@import "bootstrap/scss/bootstrap";
+
+body {
+  padding-top: 100px;
+  background: #141414;
+  overflow-x: hidden;
+  // background: radial-gradient(
+  //   circle,
+  //   rgba(114, 114, 114, 1) 17%,
+  //   rgba(76, 76, 76, 1) 66%
+  // );
+}
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #821010 #ffffff00;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba($color: #212121, $alpha: 0.8);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #800101;
+  border-radius: 10px;
+  border: 3px solid #ffffff00;
+}
