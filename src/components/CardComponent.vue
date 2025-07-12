@@ -10,7 +10,7 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; " allowfullscreen></iframe>
         <Transition>
 
-            <img v-if="show" :src="`https://image.tmdb.org/t/p/w780${item.backdrop_path}`" alt="" class=""
+            <img v-if="show" :src="`https://image.tmdb.org/t/p/w500${item.backdrop_path}`" alt="" class=""
                 @error="loadImageFailed">
 
         </Transition>
@@ -147,7 +147,7 @@ export default {
     overflow: hidden;
     cursor: pointer;
     transform-origin: top center;
-    @include transition(transform, $transition-normal);
+    @include transition(all, $transition-normal);
 
     h4 {
         // padding: 0.5rem 0;
@@ -158,8 +158,7 @@ export default {
     }
 
     &:hover {
-        transform: scale(1.3);
-        width: 280px;
+        transform: scale(1.1);
         border: 1px solid gray;
         border-radius: 10px;
         box-shadow: 0px 0px 15px 5px black;
