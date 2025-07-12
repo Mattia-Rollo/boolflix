@@ -10,7 +10,7 @@ $fa-font-path: "./webfonts";
 
 body {
   padding-top: 100px;
-  background: #141414;
+  background: $color-background;
   overflow-x: hidden;
   // background: radial-gradient(
   //   circle,
@@ -20,7 +20,7 @@ body {
 }
 * {
   scrollbar-width: auto;
-  scrollbar-color: #821010 #ffffff00;
+  scrollbar-color: $color-scrollbar-thumb #ffffff00;
 }
 
 /* Chrome, Edge, and Safari */
@@ -29,11 +29,11 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-  background: rgba($color: #212121, $alpha: 0.8);
+  background: rgba($color-scrollbar-track, 0.8);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #800101;
+  background-color: $color-scrollbar-thumb;
   border-radius: 10px;
   border: 3px solid #ffffff00;
 }
