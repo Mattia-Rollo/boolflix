@@ -58,7 +58,7 @@ export default {
 
         // searchMovie() {
         //     // store.params = { ...this.search };
-        //     //facciamo una copia di this.earch per non cancellarne le proprietà
+        //     //facciamo una copia di this.search per non cancellarne le proprietà
         //     const search = { ...this.search }
         //     //cicliamo sull'array delle chiavi dell'oggetto e se il valore è vuoto cancelliamo la proprietà
         //     Object.keys(search).forEach((val) => {
