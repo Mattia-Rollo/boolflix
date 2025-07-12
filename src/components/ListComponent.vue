@@ -1,6 +1,6 @@
 <template>
     <div v-if="store.loading" class="container py-3">
-        <div class="row row-cols-1 row-cols-md-4 row-cols-lg-5 g-3 py-1">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3">
             <div v-for="n in 10" :key="n" class="col">
                 <div class="skeleton-card"></div>
             </div>
@@ -8,17 +8,17 @@
     </div>
     <Transition name="slide-fade">
         <div class="container py-3" v-if="array.length">
-            <!-- <div v-if="!store.ListMovie.length > 0">{{ store.errormessage }}</div> -->
-            <h2 class="py-1" v-if="!store.loading">{{ titolo }}</h2>
-            <div class="card-row" v-if="!store.loading">
-                <CardComponent v-for="item in array" :key="item.id" :item="item" />
+            <h2 class="text-light mb-3" v-if="!store.loading">{{ titolo }}</h2>
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3" v-if="!store.loading">
+                <div class="col" v-for="item in array" :key="item.id">
+                    <CardComponent :item="item" />
+                </div>
             </div>
         </div>
     </Transition>
 </template>
 
 <script>
-import axios from 'axios';
 import { store } from '../store';
 import CardComponent from './CardComponent.vue';
 
@@ -27,16 +27,11 @@ export default {
     props: ["array", "titolo"],
     data() {
         return {
-            store,
-            apiUrlFlag: "https://countryflagsapi.com/png/br"
+            store
         };
     },
 
     methods: {
-
-
-    },
-    updated() {
 
     },
     components: { CardComponent }
@@ -74,25 +69,6 @@ h2 {
     @include skeleton;
 }
 
-.card-row {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    gap: 1rem;
-    padding-bottom: 0.5rem;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE 10+ */
-}
-
-.card-row::-webkit-scrollbar {
-    display: none;
-}
-
-.card-row > * {
-    flex: 0 0 auto;
-}
 
 .slide-fade-enter-active {
     @include transition(all, $transition-slow, ease-out);

@@ -9,14 +9,10 @@ $fa-font-path: "./webfonts";
 @import "bootstrap/scss/bootstrap";
 
 body {
-  padding-top: 100px;
-  background: $color-background;
+  padding-top: 80px;
+  background: linear-gradient(180deg, #000 0%, $color-background 50%);
   overflow-x: hidden;
-  // background: radial-gradient(
-  //   circle,
-  //   rgba(114, 114, 114, 1) 17%,
-  //   rgba(76, 76, 76, 1) 66%
-  // );
+  color: $color-text;
 }
 * {
   scrollbar-width: auto;

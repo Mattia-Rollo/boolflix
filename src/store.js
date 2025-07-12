@@ -15,7 +15,7 @@ export const store = reactive({
   endPointMovie: "movie",
   endPointTv: "tv",
   popular: "popular/",
-  key_ath: "?api_key=8ace785dd1f96b68334521629f5dadaf",
+  key_ath: `?api_key=${import.meta.env.VITE_TMDB_KEY}`,
   errormessage: "",
   ListMovie: [],
   ListSeries: [],
@@ -37,8 +37,6 @@ export const store = reactive({
         setTimeout(() => {
           this.loading = false;
         }, 1500);
-        // this.series = true;
-        // console.log(this.params);
       })
       .catch((error) => {
         this.ListMovie.length = 0;
@@ -96,12 +94,10 @@ export const store = reactive({
       .get(this.apiURL + "genre/movie/list" + this.key_ath)
       .then((res) => {
         this.genres = res.data.genres;
-        // console.log(this.genres);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   },
   cast: [],
-  series: true,
 });

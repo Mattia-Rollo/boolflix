@@ -25,12 +25,6 @@ export default {
   },
   computed: {
     filteredMovie() {
-      store.series = false;
-      // console.log(store.categorySelected)
-      // console.log(store.ListMovie[0].genre_ids)
-      // console.log(store.ListMovie[0])
-
-
       return store.categorySelected
         ? store.ListMovie.filter((item) => {
           return item.genre_ids.includes(store.categorySelected);
@@ -40,10 +34,6 @@ export default {
     },
     filteredSeries() {
 
-      // console.log(store.categorySelected)
-      // console.log(store.ListMovie[0].genre_ids)
-      // console.log(store.ListMovie[0])
-      store.series = true;
       return store.categorySelected
         ? store.ListSeries.filter((item) => {
           return item.genre_ids.includes(store.categorySelected);
@@ -60,16 +50,8 @@ export default {
     //this.getCharacters()
   },
   mounted() {
-    // const a = store.ListMovie.filter((item) => {
-    //   item.genre_ids.includes(store.categorySelected);
-    // })
-    // console.log(store.ListMovie);
   },
   updated() {
-
-    // console.log(store.genres);
-    // console.log(this.genresApp);
-    // console.log(this.movieApp);
   }
 }
 </script>

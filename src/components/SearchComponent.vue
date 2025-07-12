@@ -19,6 +19,7 @@
 <script>
 // import axios from 'axios';
 import { store } from '../store';
+import debounce from 'lodash.debounce';
 export default {
     name: 'SearchComponent',
     data() {
@@ -31,20 +32,22 @@ export default {
             // }
         }
     },
-    watch: {
-        'store.search.query'(newVal, OldVal) {
-            // console.log(newVal, OldVal);
-            if (newVal == '') {
-                // store.series = true;
+    created() {
+        this.debouncedSearch = debounce(() => {
+            if (store.search.query === '') {
                 store.ListMovie = [];
                 store.ListSeries = [];
                 store.getPopular();
             } else {
-                // store.series = false;
                 store.ListMovie = [];
                 store.ListSeries = [];
                 store.getMovie();
             }
+        }, 500);
+    },
+    watch: {
+        'store.search.query'() {
+            this.debouncedSearch();
         }
     },
     methods: {
@@ -65,10 +68,6 @@ export default {
         //         if (!search[val]) delete search[val]
         //     })
         //     //cloniamo in params l'oggetto con le proprietà valorizzate
-        //     console.log(this.search)
-        //     store.params = { ...this.search };
-
-        //     // console.log(store.params)
         //     store.getMovie()
         //     //this.$emit('filterchar');
         // },
@@ -84,14 +83,7 @@ export default {
         // }
     },
     mounted() {
-        // console.log(this.$refs.focusMe)
-        // this.$nextTick(() => {
-        //     if (!this.$refs.focusMe) {
-        //         return this.$refs.focusMe.focus();
-        //     }
-        // }
-        // )
-        this.$nextTick(() => this.show ? console.log(this.$refs.focusMe) : console.log('ciao'))
+        this.$nextTick(() => {})
     },
     updated() {
     },
