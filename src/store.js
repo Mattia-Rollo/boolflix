@@ -76,7 +76,7 @@ export const store = reactive({
   getPopular() {
     this.loading = true;
     axios
-      .get(this.apiURL + "/trending/movie/week" + this.key_ath, {
+      .get(this.apiURL + "trending/movie/week" + this.key_ath, {
         params: {
           language: "it-IT",
         },
