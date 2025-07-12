@@ -1,8 +1,9 @@
 <template>
-
-    <div class="bg-loading" v-if="store.loading">
-        <div class="ring">Loading
-            <span></span>
+    <div v-if="store.loading" class="container py-3">
+        <div class="row row-cols-1 row-cols-md-4 row-cols-lg-5 g-3 py-1">
+            <div v-for="n in 10" :key="n" class="col">
+                <div class="skeleton-card"></div>
+            </div>
         </div>
     </div>
     <Transition name="slide-fade">
@@ -45,6 +46,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use '../assets/partials/mixins' as *;
 @use '../assets/partials/variables' as *;
 
 h2 {
@@ -67,92 +69,19 @@ h2 {
 
 
 
-.ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 150px;
-    height: 150px;
-    background: transparent;
-    border: 3px solid #3c3c3c;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 147px;
-    font-family: sans-serif;
-    font-size: 20px;
-    color: #ff0000;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px #000000;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .5);
-}
 
-.ring:before {
-    // content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    width: 100%;
-    height: 100%;
-    border: 3px solid transparent;
-    border-top: 3px solid #ff0000;
-    border-right: 3px solid #ff0000;
-    border-radius: 50%;
-    animation: animateC 2s linear infinite;
-}
-
-span {
-
-    display: block;
-    position: absolute;
-    top: calc(50% - 2px);
-    left: 50%;
-    width: 50%;
-    height: 4px;
-    background: transparent;
-    transform-origin: left;
-    animation: animate 2s linear infinite;
-}
-
-span:before {
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #ff0000;
-    top: -6px;
-    right: -8px;
-    box-shadow: 0 0 20px #ff0000;
-}
-
-@keyframes animateC {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes animate {
-    0% {
-        transform: rotate(45deg);
-    }
-
-    100% {
-        transform: rotate(405deg);
-    }
+.skeleton-card {
+    height: 350px;
+    border-radius: 10px;
+    @include skeleton;
 }
 
 .slide-fade-enter-active {
-    transition: all 0.8s ease-out;
+    @include transition(all, $transition-slow, ease-out);
 }
 
 .slide-fade-leave-active {
-    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+    @include transition(all, $transition-slow, cubic-bezier(1, 0.5, 0.8, 1));
 }
 
 .slide-fade-enter-from,

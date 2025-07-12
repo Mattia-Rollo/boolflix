@@ -137,37 +137,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use '../assets/partials/mixins' as *;
+@use '../assets/partials/variables' as *;
+
 .mycard {
-    // padding: 1rem;
-    background-color: #141414;
-    color: whitesmoke;
+    background-color: $color-background;
+    color: $color-text;
     height: 350px;
     overflow: hidden;
-    // border-radius: 10px;
-    transition: all 0.5s;
-    // transition-delay: 1s;
     cursor: pointer;
+    transform-origin: top center;
+    @include transition(transform, $transition-normal);
 
     h4 {
         // padding: 0.5rem 0;
     }
 
     h4~div {
-        color: #ffffff;
+        color: $color-text;
     }
 
     &:hover {
-
-        transform: scale(130%);
+        transform: scale(1.3);
         width: 280px;
-        // height: 350px;
         border: 1px solid gray;
         border-radius: 10px;
-        // margin: 40px 0;
         box-shadow: 0px 0px 15px 5px black;
-
-        // width: 300px;
-        // height: 600px;
         z-index: 1000;
     }
 
@@ -200,7 +195,7 @@ img {
     height: 350px;
     object-fit: cover;
     object-position: top;
-    transition: all 0.5s;
+    @include transition(all, $transition-normal);
     // transition-delay: 1s;
 }
 
@@ -218,10 +213,10 @@ img {
     // top: 0;
     // left: 50%;
     // transform: translate(-50%, -50%);
-    background-color: rgba($color: #202020, $alpha: 0.8);
+    background-color: rgba($color-background, 0.8);
     // top: 175px;
     opacity: 0;
-    transition: opacity 0.5s;
+    @include transition(opacity, $transition-normal);
     // transition-delay: 1s;
     // transition-delay: 1s;
 
@@ -241,7 +236,7 @@ img {
 /* Firefox */
 * {
     scrollbar-width: auto;
-    scrollbar-color: #a81010 #ffffff00;
+    scrollbar-color: $color-scrollbar-thumb #ffffff00;
 }
 
 /* Chrome, Edge, and Safari */
@@ -250,11 +245,11 @@ img {
 }
 
 *::-webkit-scrollbar-track {
-    background: rgba($color: #212121, $alpha: 0.3);
+    background: rgba($color-scrollbar-track, 0.3);
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #800101;
+    background-color: $color-scrollbar-thumb;
     border-radius: 10px;
     border: 3px solid #ffffff00;
 }
@@ -270,7 +265,7 @@ img {
 
 .v-enter-active,
 .v-leave-active {
-    transition: opacity 0.5s ease-out;
+    @include transition(opacity, $transition-normal, ease-out);
 }
 
 .v-enter-from,
