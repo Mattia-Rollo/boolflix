@@ -78,6 +78,8 @@ h2 {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
     gap: 1rem;
     padding-bottom: 0.5rem;
     scrollbar-width: none; /* Firefox */
