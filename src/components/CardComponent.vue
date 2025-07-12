@@ -140,6 +140,7 @@ export default {
     background-color: $color-background;
     color: $color-text;
     height: 350px;
+    width: 200px;
     overflow: hidden;
     cursor: pointer;
     transform-origin: top center;

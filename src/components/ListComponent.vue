@@ -10,10 +10,8 @@
         <div class="container py-3" v-if="array.length">
             <!-- <div v-if="!store.ListMovie.length > 0">{{ store.errormessage }}</div> -->
             <h2 class="py-1" v-if="!store.loading">{{ titolo }}</h2>
-            <div v-if="!store.loading" class="row row-cols-1 row-cols-md-4 row-cols-lg-5 g-3 py-1">
-                <div v-for="(item, index) in array" class="col" :key="index">
-                    <CardComponent :item="item" />
-                </div>
+            <div class="card-row" v-if="!store.loading">
+                <CardComponent v-for="item in array" :key="item.id" :item="item" />
             </div>
         </div>
     </Transition>
@@ -74,6 +72,24 @@ h2 {
     height: 350px;
     border-radius: 10px;
     @include skeleton;
+}
+
+.card-row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+
+.card-row::-webkit-scrollbar {
+    display: none;
+}
+
+.card-row > * {
+    flex: 0 0 auto;
 }
 
 .slide-fade-enter-active {
