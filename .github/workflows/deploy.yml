@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      VITE_TMDB_API_KEY: your_actual_tmdb_api_key  # o VUE_APP_TMDB_API_KEY se usi Vue CLI
+      VITE_TMDB_KEY: ${{ secrets.VITE_TMDB_KEY }}  # o VUE_APP_TMDB_API_KEY se usi Vue CLI
 
     steps:
       - uses: actions/checkout@v3
