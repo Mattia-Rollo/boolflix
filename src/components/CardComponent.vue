@@ -88,9 +88,10 @@ export default {
 
         getCast(movieId) {
             let attori = '';
-            let video = ''
+            let video = '';
             let apiUrlCast = '';
             let apiUrlVideo = '';
+            this.listaNomi = [];
             if (!this.item.title) {
                 apiUrlCast = `https://api.themoviedb.org/3/tv/${movieId}/credits?api_key=8ace785dd1f96b68334521629f5dadaf`;
                 apiUrlVideo = `https://api.themoviedb.org/3/tv/${movieId}/videos?api_key=8ace785dd1f96b68334521629f5dadaf`
@@ -115,6 +116,7 @@ export default {
         getGenreIds(genre_ids) {
             // console.log(genre_ids)
             // console.log(store.genres);
+            this.listaGeneri = [];
             for (let it of genre_ids) {
                 let x = store.genres.filter((item) => item.id == it)
                 for (let item of x) {
