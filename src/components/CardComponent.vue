@@ -8,15 +8,11 @@
         </video> -->
         <iframe v-if="show" width="280" height="175" :src="video" title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; " allowfullscreen></iframe>
-        <Transition>
-
-            <img v-if="show" :src="`https://image.tmdb.org/t/p/w500${item.backdrop_path}`" alt="" class=""
-                @error="loadImageFailed">
-
-        </Transition>
-        <img v-if="!show"
+        <img class="backdrop" :src="`https://image.tmdb.org/t/p/w500${item.backdrop_path}`" alt=""
+            @error="loadImageFailed">
+        <img class="poster"
             :src="item.poster_path ? `https://image.tmdb.org/t/p/w342${item.poster_path}` : 'https://via.placeholder.com/400.png?text=Image+400x400'"
-            alt="" class="" @error="loadImageFailed">
+            alt="" @error="loadImageFailed">
         <div class="card-body">
 
 
@@ -165,21 +161,7 @@ export default {
         z-index: 1000;
     }
 
-    &:hover img:not(.flag) {
-        height: 175px;
-        object-fit: cover;
-        position: absolute;
-        bottom: 0; // object-position: center;
-        // display: none;
-        // width: 300px;
-        z-index: 1000;
-
-    }
-
     &:hover .card-body {
-        height: 175px;
-        // width: 300px;
-
         opacity: 1;
         z-index: 1000;
     }
@@ -189,41 +171,39 @@ export default {
     // background-clip: url('https://vlp.to/Aqa4V29o');
 }
 
-img {
+.poster,
+.backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 350px;
+    height: 100%;
     object-fit: cover;
-    object-position: top;
-    @include transition(all, $transition-normal);
-    // transition-delay: 1s;
+    overflow: hidden;
+    @include transition(opacity, $transition-normal);
 }
+
+.backdrop {
+    opacity: 0;
+}
+
+.mycard:hover .backdrop {
+    opacity: 1;
+}
+
 
 .card-body {
     position: absolute;
-    // display: none;
-    bottom: 0;
+    top: 0;
+    left: 0;
     font-size: 0.8rem;
     overflow-y: auto;
     padding: 0.8rem;
-    // justify-content: center;
-    // margin: 0 auto;
-    height: 175px;
+    height: 100%;
     width: 100%;
-    // top: 0;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
     background-color: rgba($color-background, 0.8);
-    // top: 175px;
     opacity: 0;
     @include transition(opacity, $transition-normal);
-    // transition-delay: 1s;
-    // transition-delay: 1s;
-
-    &:hover {
-        opacity: 1;
-        display: block;
-        height: 100px;
-    }
 
     * {
         padding: 0.2rem 0;
