@@ -89,11 +89,11 @@ export default {
             let apiUrlVideo = '';
             this.listaNomi = [];
             if (!this.item.title) {
-                apiUrlCast = `https://api.themoviedb.org/3/tv/${movieId}/credits?api_key=8ace785dd1f96b68334521629f5dadaf`;
-                apiUrlVideo = `https://api.themoviedb.org/3/tv/${movieId}/videos?api_key=8ace785dd1f96b68334521629f5dadaf`
+                apiUrlCast = `https://api.themoviedb.org/3/tv/${movieId}/credits${store.key_ath}`;
+                apiUrlVideo = `https://api.themoviedb.org/3/tv/${movieId}/videos${store.key_ath}`;
             } else {
-                apiUrlCast = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=8ace785dd1f96b68334521629f5dadaf`;
-                apiUrlVideo = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=8ace785dd1f96b68334521629f5dadaf`;
+                apiUrlCast = `https://api.themoviedb.org/3/movie/${movieId}/credits${store.key_ath}`;
+                apiUrlVideo = `https://api.themoviedb.org/3/movie/${movieId}/videos${store.key_ath}`;
             }
             axios.get(apiUrlCast).then((res) => {
                 attori = res.data.cast.filter((item, idx) => idx < 5);
@@ -104,14 +104,9 @@ export default {
             axios.get(apiUrlVideo).then((res) => {
                 video = res.data.results[0];
                 this.video = 'https://www.youtube.com/embed/' + video.key;
-                console.log(this.video);
-                // console.log(this.listaNomi.join());
-                // return this.listaNomi;
             })
         },
         getGenreIds(genre_ids) {
-            // console.log(genre_ids)
-            // console.log(store.genres);
             this.listaGeneri = [];
             for (let it of genre_ids) {
                 let x = store.genres.filter((item) => item.id == it)
@@ -119,14 +114,11 @@ export default {
                     this.listaGeneri.push(' ' + item.name + ' ');
                 }
             }
-            // console.log(compareIds)
 
         }
 
     },
     beforeMount() {
-        // console.log(this.$refs.index)
-        // this.getCast(this.item.id)
         this.getGenreIds(this.item.genre_ids)
     },
 }
