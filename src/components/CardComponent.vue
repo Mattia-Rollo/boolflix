@@ -142,6 +142,7 @@ export default {
     height: 350px;
     width: 200px;
     overflow: hidden;
+    scroll-snap-align: start;
     cursor: pointer;
     transform-origin: top center;
     @include transition(all, $transition-normal);
