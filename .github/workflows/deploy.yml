@@ -16,6 +16,7 @@ jobs:
       VITE_TMDB_KEY: ${{ secrets.VITE_TMDB_KEY }}  # o VUE_APP_TMDB_API_KEY se usi Vue CLI
 
     steps:
+      - run: echo "Chiave TMDb = $VITE_TMDB_KEY"
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
